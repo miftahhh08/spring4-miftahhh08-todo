@@ -34,7 +34,7 @@ command: `./mvnw test jacoco:report`
 
 command-check: `./mvnw clean test jacoco:check`
 
--Update biar centang
+-Update biar gacor
 
 
 

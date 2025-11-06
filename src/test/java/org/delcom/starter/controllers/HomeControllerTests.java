@@ -52,9 +52,9 @@ class HomeControllerTest {
     @Test
     @DisplayName("dataNim - NIM Valid (11S)")
     void dataNim_ValidCase() {
-        String nim = "11S24001";
+        String nim = "11S24007";
         String expectedOutput = """
-                Informasi NIM 11S24001:\s
+                Informasi NIM 11S24007:\s
                 >> Jurusan: S1 Informatika
                 >> Tahun Masuk: 2024
                 >> Nomor Urut: 1""";

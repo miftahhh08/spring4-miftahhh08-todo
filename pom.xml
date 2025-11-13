@@ -12,10 +12,10 @@
 	</parent>
 
 	<groupId>org.delcom</groupId>
-	<artifactId>spring-starter</artifactId>
+	<artifactId>spring-todos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Spring Todo</name>
-	<description>Starter Application with Spring Boot</description>
+	<name>Spring Todos</name>
+	<description>Todo Application with Spring Boot</description>
 
 	<properties>
 		<java.version>25</java.version>
@@ -26,6 +26,8 @@
 		<maven.jacoco.plugin.version>0.8.14</maven.jacoco.plugin.version>
 		<!-- Versi dependency yang digunakan -->
 		<maven.dependency.mockito.version>5.20.0</maven.dependency.mockito.version>
+		<maven.dependency.jakarta.servlet-api.version>6.1.0</maven.dependency.jakarta.servlet-api.version>
+		<maven.dependency.jjwt.version>0.13.0</maven.dependency.jjwt.version>
 	</properties>
 
 	<dependencies>
@@ -56,6 +58,12 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- Dependency for Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+		</dependency>
+
 		<!-- Depedency for mockito -->
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -68,13 +76,49 @@
 		<dependency>
 			<groupId>jakarta.servlet</groupId>
 			<artifactId>jakarta.servlet-api</artifactId>
-			<version>6.1.0</version>
+			<version>${maven.dependency.jakarta.servlet-api.version}</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<!-- Dependency for JWT -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>${maven.dependency.jjwt.version}</version>
+		</dependency>
+
+		<!-- Dependency for JWT Implementation -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>${maven.dependency.jjwt.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Dependency for JWT Jackson Parser -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>${maven.dependency.jjwt.version}</version>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<!-- Spring Boot Maven Plugin -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 			<!-- dependency plugin tetap jika diperlukan -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
